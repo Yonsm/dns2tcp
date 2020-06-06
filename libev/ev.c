@@ -4104,8 +4104,10 @@ ev_run (EV_P_ int flags)
 #if !EV_PERIODIC_ENABLE
             /* without periodics but with monotonic clock there is no need */
             /* for any time jump detection, so sleep longer */
+#if EV_USE_MONOTONIC
             if (ecb_expect_true (have_monotonic))
               waittime = EV_TS_CONST (MAX_BLOCKTIME2);
+#endif
 #endif
 
             if (timercnt)
